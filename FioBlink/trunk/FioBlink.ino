@@ -3,10 +3,9 @@
 
 L3G gyro;
 
-int incomingByte = 0;	// for incoming serial data
-
 void setup() {
-	Serial.begin(9600);	// opens serial port, sets data rate to 9600 bps
+	
+	Serial.begin(9600);			// opens serial port, sets data rate to 9600 bps
 	Wire.begin();
 	pinMode(13, OUTPUT);
 	
@@ -32,28 +31,16 @@ void setup() {
 
 void loop() {
 	
-	// send data only when you receive data:
-	if (Serial.available() > 0) {
-		
-		// read the incoming byte:
-		incomingByte = Serial.read();
-		
-		// read data from gyroscope
-		gyro.read();
-		
-		if(incomingByte == '0') {			
-			digitalWrite(13, LOW);
-		}
-		else if(incomingByte == '1') {
-			digitalWrite(13, HIGH);
-		}
-		
-		// say what you got:
-		Serial.print("Fio received: ");
-		Serial.write(incomingByte);			// Arduino 1.0 compatibility
-		Serial.write(10);					// send a line feed/new line, ascii 10
-		Serial.print("X-Axis: ");
-		Serial.print((int)gyro.g.x);
-		Serial.write(10);					// send a line feed/new line
-	}
+	
+	gyro.read();					// read data from gyroscope
+	Serial.print("X-Axis: ");
+	Serial.print((int)gyro.g.x);
+	Serial.print(" Y-Axis: ");
+	Serial.print((int)gyro.g.y);
+	Serial.print(" Z-Axis: ");
+	Serial.print((int)gyro.g.z);
+	Serial.write(10);				// send a line feed/new line
+	
+	delay(100);
+	
 }
