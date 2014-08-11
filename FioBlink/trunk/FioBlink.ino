@@ -1,14 +1,22 @@
 #include <Wire.h>
 #include <L3G.h>
 
+// Gyroscope instance
 L3G gyro;
+
+// PB5 = 32
+#define	LED	32					
+
+// Turn-on and turn-off PB5 200 ms
+#define BLINK_LED	PORTB |= LED, delay(200), PORTB &= ~LED, delay(200)
 
 void setup() {
 	
-	Serial.begin(9600);			// opens serial port, sets data rate to 9600 bps
+	Serial.begin(57600);				// Opens serial port, sets data rate to 57600 bps
 	Wire.begin();
-	pinMode(13, OUTPUT);
+	DDRB |= (1 << PORTB5);				// Set PB5 as output
 	
+	// Check if gyroscope is working
 	if (!gyro.init())
 	{
 		Serial.println("Failed to autodetect gyro type!");
@@ -17,16 +25,8 @@ void setup() {
 	gyro.enableDefault();
 	
 	// blink twice at startup
-	digitalWrite(13, LOW);
-	delay(1000);
-	
-	digitalWrite(13, HIGH); // first blink
-	delay(50);
-	digitalWrite(13, LOW);
-	delay(200);
-	digitalWrite(13, HIGH); // second blink
-	delay(50);
-	digitalWrite(13, LOW);
+	BLINK_LED;
+	BLINK_LED;
 }
 
 void loop() {
