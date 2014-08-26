@@ -25,7 +25,7 @@ void getGyroscopeReadings();
 void calculateGyroOffset();
 void getAccelerometerReadings();
 void calculateAccOffset();
-void getIMUData();
+void displayData();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
