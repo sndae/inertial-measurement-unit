@@ -365,6 +365,9 @@ build.arch=AVR
     <Compile Include="Visual Micro\.FioBlink%288%29.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Visual Micro\.FioBlink%289%29.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Visual Micro\.FioBlink.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
