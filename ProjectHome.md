@@ -1,0 +1,1 @@
+In order to simulate and validate a control system for electrical stimulation, it is neccessary to obtain relaible data through an Inertial Measurement Unit. The IMU consist of 3-axis accelerometer, 3-axis gyroscope and 3-axis magnetometer mounted close to the ankle joint. The data is sended throught a wireless link using Zigbee and an Arduino Fio
